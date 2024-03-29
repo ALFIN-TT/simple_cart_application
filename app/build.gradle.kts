@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.alfin.productlistingapp"
+    namespace = "com.alfin.simplecartapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.alfin.productlistingapp"
+        applicationId = "com.alfin.simplecartapp"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Product Listing App</string>
+    <string name="app_name">Simple Cart App</string>
     <string name="strRetry">Retry</string>
     <string name="strFetchingDataFromServer">Fetching data from server</string>
     <string name="str_cart">Cart</string>
