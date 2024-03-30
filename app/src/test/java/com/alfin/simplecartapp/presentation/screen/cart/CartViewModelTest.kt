@@ -79,15 +79,17 @@ class CartViewModelTest {
     @Test
     fun testAddToCart() = testScope.runBlockingTest {
         val previousState = cartViewModel.isCartUpdated.value
-        cartViewModel.addToCart(Product(brand = "Apple", quantity = 2), selectedQuantity = 4)
-        advanceUntilIdle()
-        Truth.assertThat(!previousState).isEqualTo(cartViewModel.isCartUpdated.value)
-
+        Mockito.`when`(addToCartUseCase(Product(id = 2, brand = "Apple", quantity = 2))).thenReturn(4)
+        val product = Product(id = 2, brand = "Apple", quantity = 2)
+        cartViewModel.addToCart(product = product, selectedQuantity = 4)
+        testScheduler.apply { advanceTimeBy(0);runCurrent() }
+       Truth.assertThat(!previousState).isEqualTo(cartViewModel.isCartUpdated.value)
     }
 
     @Test
     fun testDeleteCart() = testScope.runBlockingTest {
         val previousState = cartViewModel.isCartUpdated.value
+        Mockito.`when`(deleteCartProductUseCase(Product(id = 2, brand = "Apple", quantity = 2))).thenReturn(Unit)
         cartViewModel.deleteCart(Product(brand = "Apple", quantity = 2), selectedQuantity = 4)
         testScheduler.apply { advanceTimeBy(0);runCurrent() }
         Truth.assertThat(!previousState).isEqualTo(cartViewModel.isCartUpdated.value)
