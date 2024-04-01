@@ -11,7 +11,9 @@ import com.alfin.simplecartapp.presentation.screen.home.viewmodel.HomeViewModel
 import com.google.common.truth.Truth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.TestCoroutineScope
 import kotlinx.coroutines.test.resetMain
@@ -68,10 +70,11 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun testGetCartCount() = testScope.runBlockingTest {
+    fun testGetCartCount() = runBlocking {
         Mockito.`when`(cartCountUseCase.invoke()).thenReturn(1)
         homeViewModel.getCartCount()
-        testScheduler.apply { advanceTimeBy(0); runCurrent() }
+        delay(100)
+        //testScheduler.apply { advanceTimeBy(0); runCurrent() }
         Truth.assertThat(homeViewModel.cartCountState.value).isEqualTo(1)
     }
 }

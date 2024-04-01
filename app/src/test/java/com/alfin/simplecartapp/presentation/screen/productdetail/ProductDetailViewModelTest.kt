@@ -23,6 +23,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.TestCoroutineScope
 import kotlinx.coroutines.test.advanceUntilIdle
@@ -97,22 +98,24 @@ class ProductDetailViewModelTest {
     }
 
     @Test
-    fun testAddToCart() = testScope.runBlockingTest {
+    fun testAddToCart() = runBlocking {
         Mockito.`when`(addToCartUseCase(Product(id = 2, brand = "Apple", quantity = 2)))
             .thenReturn(4)
         productDetailViewModel.addToCart(
             Product(id = 2, brand = "Apple", quantity = 2),
             selectedQuantity = 4
         )
-        testScheduler.apply { advanceTimeBy(0);runCurrent() }
+       // testScheduler.apply { advanceTimeBy(0);runCurrent() }
+        delay(100)
         Truth.assertThat(productDetailViewModel.productDetailState.value.data.quantity).isEqualTo(4)
     }
 
     @Test
-    fun getCartCount() = testScope.runBlockingTest {
+    fun getCartCount() = runBlocking {
         Mockito.`when`(getCartCountUseCase()).thenReturn(10)
         productDetailViewModel.getCartCount()
-        testScheduler.apply { advanceTimeBy(0);runCurrent() }
+       // testScheduler.apply { advanceTimeBy(0);runCurrent() }
+        delay(100)
         val cartCount = productDetailViewModel.cartCountState.first()
         Truth.assertThat(cartCount).isEqualTo(10)
     }
