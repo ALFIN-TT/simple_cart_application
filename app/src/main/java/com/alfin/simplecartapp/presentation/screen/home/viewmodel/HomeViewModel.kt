@@ -1,5 +1,7 @@
 package com.alfin.simplecartapp.presentation.screen.home.viewmodel
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -9,6 +11,7 @@ import com.alfin.simplecartapp.domain.usecase.GetCartCountUseCase
 import com.alfin.simplecartapp.domain.usecase.GetProductsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -25,8 +28,8 @@ class HomeViewModel @Inject constructor(
         MutableStateFlow(value = PagingData.empty())
     val productsState: MutableStateFlow<PagingData<Product>> get() = _productsState
 
-    private val _cartCountState: MutableStateFlow<Int> = MutableStateFlow(value = 0)
-    val cartCountState: MutableStateFlow<Int> get() = _cartCountState
+    private val _cartCountState: MutableState<Int> = mutableStateOf(value = 0)
+    val cartCountState: MutableState<Int> get() = _cartCountState
 
     fun fetchProducts() {
         viewModelScope.launch {
@@ -36,14 +39,14 @@ class HomeViewModel @Inject constructor(
 
     fun getCartCount() {
         viewModelScope.launch(Dispatchers.IO) {
-            val cartCount = cartCountUseCase()
+            val cartCount = async { cartCountUseCase() }.await()
             withContext(Dispatchers.Main) {
                 _cartCountState.value = cartCount
             }
         }
     }
 
-    suspend fun getProducts() {
+    private suspend fun getProducts() {
         userCase()
             .distinctUntilChanged()
             .cachedIn(viewModelScope)

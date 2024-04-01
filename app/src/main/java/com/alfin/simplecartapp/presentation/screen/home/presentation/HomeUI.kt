@@ -30,7 +30,6 @@ import com.alfin.simplecartapp.data.constants.Constants
 import com.alfin.simplecartapp.data.constants.Keys
 import com.alfin.simplecartapp.presentation.navigation.Screen
 import com.alfin.simplecartapp.presentation.screen.home.viewmodel.HomeViewModel
-import kotlinx.coroutines.flow.asStateFlow
 
 @Composable
 fun HomeUI(
@@ -69,13 +68,8 @@ private fun DrawScreenBody(
     navController: NavController,
     homeViewModel: HomeViewModel
 ) {
-    LaunchedEffect(Unit) {
-        homeViewModel.getCartCount()
-    }
-
-    val cartCountState = homeViewModel.cartCountState.asStateFlow()
     DrawHomeHeader(
-        cartCount = cartCountState.value,
+        cartCount = homeViewModel.cartCountState,
         onClickCart = { navController.navigate(Screen.CartUI.route) }
     )
     DrawContent(
@@ -83,6 +77,7 @@ private fun DrawScreenBody(
         homeViewModel = homeViewModel
     )
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
