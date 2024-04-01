@@ -26,17 +26,17 @@ This is a simple cart application, that allows users to Browse products, View Pr
 
 #### Home Screen
 
-<img src="/screenshots/home_screen.png" alt="Home Screen Screenshot" width="220"/>
+<img src="/screenshots/home_screen.png" alt="Home Screen Screenshot" width="280"/>
 
 #### Product Detail Screen
 
-<img src="/screenshots/product_details_screen.png" alt="Product Detail Screen Screenshot 01" width="220"/>
+<img src="/screenshots/product_details_screen.png" alt="Product Detail Screen Screenshot 01" width="280"/>
 
-<img src="/screenshots/product_details_screen_1.png" alt="Product Detail Screen Screenshot 02" width="220"/>
+<img src="/screenshots/product_details_screen_1.png" alt="Product Detail Screen Screenshot 02" width="280"/>
 
 #### Cart Screen
 
-<img src="/screenshots/cart_screen.png" alt="Cart Screen Screenshot 01" width="220"/>
+<img src="/screenshots/cart_screen.png" alt="Cart Screen Screenshot 01" width="280"/>
 
-<img src="/screenshots/cart_screen_1.png" alt="Cart Screen Screenshot 02" width="220"/>
+<img src="/screenshots/cart_screen_1.png" alt="Cart Screen Screenshot 02" width="280"/>
 
