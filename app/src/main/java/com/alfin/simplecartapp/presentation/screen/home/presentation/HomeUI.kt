@@ -31,6 +31,11 @@ import com.alfin.simplecartapp.data.constants.Keys
 import com.alfin.simplecartapp.presentation.navigation.Screen
 import com.alfin.simplecartapp.presentation.screen.home.viewmodel.HomeViewModel
 
+/**
+ * Home Screen
+ * @param navController
+ * @param homeViewModel
+ */
 @Composable
 fun HomeUI(
     navController: NavController = rememberNavController(),
@@ -41,6 +46,11 @@ fun HomeUI(
     )
 }
 
+/**
+ * Draws root of the Home Screen
+ * @param navController
+ * @param homeViewModel
+ */
 @Composable
 private fun DrawRootView(
     navController: NavController, homeViewModel: HomeViewModel
@@ -55,6 +65,9 @@ private fun DrawRootView(
     }
 }
 
+/**
+ * Getting data for display in the home screen.
+ */
 @Composable
 private fun GetHomeData(viewModel: HomeViewModel) {
     LaunchedEffect(Unit) {
@@ -63,6 +76,12 @@ private fun GetHomeData(viewModel: HomeViewModel) {
     }
 }
 
+
+/***
+ * Draws body of the screen.
+ * @param homeViewModel view model
+ * @param navController Nav controller for the navigation.
+ */
 @Composable
 private fun DrawScreenBody(
     navController: NavController,
@@ -78,7 +97,11 @@ private fun DrawScreenBody(
     )
 }
 
-
+/***
+ * Draws content of the screen.
+ * @param homeViewModel view model
+ * @param navController Nav controller for the navigation.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun DrawContent(
