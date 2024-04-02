@@ -15,6 +15,11 @@ import com.alfin.simplecartapp.presentation.navigation.Screen
 import com.alfin.simplecartapp.presentation.screen.productdetail.viewmodel.ProductDetailViewModel
 import kotlinx.coroutines.flow.asStateFlow
 
+/**
+ * Product Detail Screen
+ * @param navController
+ * @param viewModel
+ */
 @Composable
 fun ProductDetailUI(
     navController: NavController = rememberNavController(),
@@ -26,6 +31,11 @@ fun ProductDetailUI(
     )
 }
 
+/**
+ * Draws root of the Product Detail Screen
+ * @param navController
+ * @param viewModel
+ */
 @Composable
 private fun DrawRootView(
     navController: NavController,
@@ -43,7 +53,10 @@ private fun DrawRootView(
     }
 }
 
-
+/**
+ * Fetching cart count and product details
+ * @param viewModel
+ */
 @Composable
 fun GetProductDetails(viewModel: ProductDetailViewModel) {
     LaunchedEffect(Unit) {
@@ -52,6 +65,11 @@ fun GetProductDetails(viewModel: ProductDetailViewModel) {
     }
 }
 
+/**
+ * Draws body of the Product Detail Screen
+ * @param navController
+ * @param viewModel
+ */
 @Composable
 private fun DrawScreenBody(
     navController: NavController = rememberNavController(),
@@ -83,6 +101,11 @@ private fun DrawScreenBody(
     }
 }
 
+/**
+ * Draws product details
+ * @param navController
+ * @param viewModel
+ */
 @Composable
 private fun DrawContent(
     product: Product,
