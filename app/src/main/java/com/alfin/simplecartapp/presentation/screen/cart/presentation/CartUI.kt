@@ -13,6 +13,11 @@ import com.alfin.simplecartapp.data.constants.Keys
 import com.alfin.simplecartapp.presentation.navigation.Screen
 import com.alfin.simplecartapp.presentation.screen.cart.viewmodel.CartViewModel
 
+/**
+ * Cart Screen
+ * @param navController
+ * @param viewModel
+ */
 @Composable
 fun CartUI(
     navController: NavController = rememberNavController(),
@@ -24,6 +29,11 @@ fun CartUI(
     )
 }
 
+/**
+ * Draws root of the Cart Screen.
+ * @param navController
+ * @param viewModel
+ */
 @Composable
 private fun DrawRootView(
     navController: NavController,
@@ -46,7 +56,11 @@ private fun DrawRootView(
     }
 }
 
-
+/**
+ * Draws body of the Cart Screen.
+ * @param navController
+ * @param viewModel
+ */
 @Composable
 private fun DrawScreenBody(
     navController: NavController = rememberNavController(),
@@ -66,6 +80,10 @@ private fun DrawScreenBody(
     )
 }
 
+/**
+ * Fetching cart details.
+ * @param viewModel
+ */
 @Composable
 private fun GetCart(viewModel: CartViewModel) {
     LaunchedEffect(viewModel.isCartUpdated.value) {
@@ -73,6 +91,9 @@ private fun GetCart(viewModel: CartViewModel) {
     }
 }
 
+/**
+ * Listing carted items or empty cart ui.
+ */
 @Composable
 private fun DrawCartContents(navController: NavController, viewModel: CartViewModel) {
     if (viewModel.cartState.value.cart.isNotEmpty()) {
