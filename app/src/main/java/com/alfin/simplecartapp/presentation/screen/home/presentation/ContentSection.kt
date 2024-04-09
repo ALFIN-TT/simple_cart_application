@@ -39,6 +39,11 @@ import com.alfin.simplecartapp.data.network.response.Product
 import com.alfin.simplecartapp.presentation.theme.RATING_COLOR
 import com.alfin.simplecartapp.presentation.theme.montserratFamily
 
+/**
+ *  Draw product card, This card contain all details of the particular product.
+ *  @param product product details.
+ *  @param onClick callback for handle click on the product.
+ */
 @Composable
 fun DrawProductCard(
     product: Product,
@@ -86,6 +91,10 @@ fun DrawProductCard(
     }
 }
 
+/**
+ *  Draw product details (name and descriptions).
+ *  @param product product details.
+ */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun DrawProductDescriptionColumn(product: Product) {
@@ -122,6 +131,10 @@ private fun DrawProductDescriptionColumn(product: Product) {
     )
 }
 
+/**
+ *  Draw product rating and price details.
+ *  @param product product details.
+ */
 @Composable
 private fun DrawProductRatingAndPriceRow(product: Product) {
     Row(

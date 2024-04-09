@@ -16,6 +16,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.alfin.simplecartapp.R
 
+/**
+ * Draw loader while loading data from backend.
+ * @param modifier
+ */
 @Composable
 fun DrawPageLoader(modifier: Modifier = Modifier) {
     Column(
@@ -33,6 +37,10 @@ fun DrawPageLoader(modifier: Modifier = Modifier) {
     }
 }
 
+/**
+ * Draw loader while loading items in home pagination scroll.
+ * @param modifier
+ */
 @Composable
 fun DrawLoadingNextPageItem(modifier: Modifier) {
     CircularProgressIndicator(

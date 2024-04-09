@@ -38,6 +38,12 @@ import com.alfin.simplecartapp.core.presentation.composable.CartButton
 import com.alfin.simplecartapp.data.network.response.Product
 import com.alfin.simplecartapp.presentation.theme.montserratFamily
 
+/**
+ * Draws list of carted items
+ * @param products carted products
+ * @param onProductClick callback for handle product click
+ * @param onCartButtonClick callback for handle product quantity changes
+ */
 @Composable
 fun DrawCartedProducts(
     products: List<Product>,
@@ -55,6 +61,13 @@ fun DrawCartedProducts(
     }
 }
 
+
+/**
+ * Draws Product details card; This card contains basic details of the carted product.
+ * @param product carted product details
+ * @param onProductClick callback for handle product click
+ * @param onCartButtonClick callback for handle product quantity changes
+ */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun DrawCartedProductCard(
@@ -112,7 +125,7 @@ private fun DrawCartedProductCard(
                     .constrainAs(name) {
                         start.linkTo(productImage.end, 8.dp)
                         top.linkTo(parent.top, 14.dp)
-                        end.linkTo(parent.end,8.dp)
+                        end.linkTo(parent.end, 8.dp)
                         width = Dimension.fillToConstraints
                     }
             )
@@ -145,6 +158,9 @@ private fun DrawCartedProductCard(
     }
 }
 
+/**
+ * Draws empty screen for cart UI.
+ */
 @Composable
 fun DrawEmptyCart() {
     Box(

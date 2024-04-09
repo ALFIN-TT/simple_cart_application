@@ -21,9 +21,16 @@ import androidx.compose.ui.unit.sp
 import com.alfin.simplecartapp.R
 import com.alfin.simplecartapp.presentation.theme.montserratFamily
 
+
+/**
+ *  Draw header section of the cart ui (title, back button, home button).
+ *  @param onBackPress callback for handle back button click
+ *  @param onClickHome callback for handle home button click
+ */
 @Composable
 fun DrawCartHeader(
-    onBackPress: () -> Unit, onClickHome: () -> Unit
+    onBackPress: () -> Unit,
+    onClickHome: () -> Unit
 ) {
     Row(
         modifier = Modifier

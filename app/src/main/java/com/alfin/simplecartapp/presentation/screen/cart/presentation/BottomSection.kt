@@ -20,6 +20,10 @@ import androidx.compose.ui.unit.dp
 import com.alfin.simplecartapp.R
 import com.alfin.simplecartapp.presentation.theme.montserratFamily
 
+/**
+ * Draw Checkout menu
+ * @param totalAmount
+ */
 @Composable
 fun DrawCheckout(totalAmount: Int) {
     Card(

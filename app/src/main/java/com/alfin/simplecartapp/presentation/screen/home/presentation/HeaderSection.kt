@@ -20,6 +20,10 @@ import com.alfin.simplecartapp.R
 import com.alfin.simplecartapp.core.presentation.composable.DrawBadgedBox
 import com.alfin.simplecartapp.presentation.theme.montserratFamily
 
+/**
+ *  Draw header section of the home ui (title, cart icon with badge).
+ *  @param cartCount carted items count for display cart icon with count badge.
+ */
 @Composable
 fun DrawHomeHeader(
     cartCount : MutableState<Int>,

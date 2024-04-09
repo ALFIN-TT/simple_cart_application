@@ -18,6 +18,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+/***
+ * View model class for [com.alfin.simplecartapp.presentation.screen.home.presentation.HomeUI]
+ * @param userCase use case for getting all products from back end.
+ * @param cartCountUseCase use case for getting carted items count from local database.
+ */
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val userCase: GetProductsUseCase,
@@ -37,6 +42,9 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Fetching carted items count from local database and update ui state.
+     */
     fun getCartCount() {
         viewModelScope.launch(Dispatchers.IO) {
             val cartCount = async { cartCountUseCase() }.await()
@@ -46,6 +54,9 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Fetching products from backend using pagination and updating ui state.
+     */
     private suspend fun getProducts() {
         userCase()
             .distinctUntilChanged()
